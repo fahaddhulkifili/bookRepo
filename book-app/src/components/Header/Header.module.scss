@@ -1,0 +1,38 @@
+@import "../../utilities/colors.scss";
+@import "../../utilities/fonts.scss";
+.headerContainer {
+  display: flex;
+  .avatarWrapper {
+    width: 81px;
+    height: 74px;
+    background: $theme-primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+  }
+  .headerWrapper {
+    height: 74px;
+    display: flex;
+    width: 100%;
+    flex: 1;
+    background: $white-color;
+    align-items: center;
+    .logoWrapper {
+      padding-left: 43px;
+      p {
+        color: $black-color;
+        font-size: 23p;
+        font-weight: 800;
+        margin: 0;
+        span {
+          color: $theme-red;
+        }
+      }
+    }
+  }
+}
