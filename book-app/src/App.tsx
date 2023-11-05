@@ -1,14 +1,20 @@
-import React from 'react';
-import './App.scss';
-import Header from './components/Header/Header';
-import Sidebar from './components/Sidebar/Sidebar';
+import React from "react";
+import "./App.scss";
+import DetailsPage from "./pages/DetailsPage/DetailsPage";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import { Routes, Route } from "react-router-dom";
+// import Header from "./components/Header/Header";
+// import Sidebar from "./components/Sidebar/Sidebar";
 
 function App() {
   return (
-    <div className="App">
-     <Header/>
-     <Sidebar/>
-    </div>
+    <>
+      <Routes>
+        <Route index element={<LandingPage />} />
+        <Route path="/home" element={<LandingPage />} />
+        <Route path="/details" element={<DetailsPage />} />
+      </Routes>
+    </>
   );
 }
 

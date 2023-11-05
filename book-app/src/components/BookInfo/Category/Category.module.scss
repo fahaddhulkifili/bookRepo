@@ -1,0 +1,15 @@
+@import "../../../utilities/colors.scss";
+.categorySection {
+  margin-top: 47px;
+  .categoryHead {
+    display: block;
+    margin-bottom: 17px;
+    color: $theme-secondary;
+    font-weight: 700;
+    font-size: 22px;
+  }
+  .gridImage {
+    width: 100%;
+    height: auto;
+  }
+}
