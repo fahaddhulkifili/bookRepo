@@ -61,4 +61,27 @@
       }
     }
   }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    .listItemData {
+      margin-top: 10px;
+      width: 100%;
+    }
+    .listItemAuthor {
+      align-items: center;
+
+      span {
+        font-size: 14px;
+        flex-basis: 50%;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        &:first-of-type {
+          color: $theme-secondary;
+          font-weight: 700;
+        }
+      }
+    }
+  }
 }

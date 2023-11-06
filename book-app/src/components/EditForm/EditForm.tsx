@@ -40,6 +40,9 @@ const EditForm = (props: Props) => {
             </div>
           </div>
         </div>
+        <Button variant="contained" className={styles.submitBtn}>
+          Update
+        </Button>
       </form>
     </div>
   );

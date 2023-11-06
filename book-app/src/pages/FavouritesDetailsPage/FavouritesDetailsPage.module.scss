@@ -1,6 +1,23 @@
 @import "../../utilities/colors.scss";
 .componentContainer {
   display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+  .returnBtn {
+    text-transform: capitalize;
+    margin-top: 41px;
+    .btnText {
+      margin-left: 10px;
+      color: $theme-secondary;
+      font-weight: 500;
+      font-size: 16px;
+      span {
+        color: #93b4bc;
+        font-weight: 700;
+      }
+    }
+  }
 }
 .pageWrapper {
   flex: 1;
@@ -63,6 +80,12 @@
           }
         }
       }
+    }
+  }
+  @media (max-width: 990px) {
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-thumb {
+      width: 0px;
     }
   }
 }

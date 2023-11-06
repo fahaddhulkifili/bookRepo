@@ -1,6 +1,9 @@
 @import "../../utilities/colors.scss";
 .componentContainer {
   display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 .pageWrapper {
   flex: 1;
@@ -28,5 +31,14 @@
     font-size: 22px;
     color: $theme-secondary;
     font-weight: 900;
+  }
+  @media (max-width: 768px) {
+    min-height: 100vh;
+  }
+  @media (max-width: 990px) {
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-thumb {
+      width: 0px;
+    }
   }
 }

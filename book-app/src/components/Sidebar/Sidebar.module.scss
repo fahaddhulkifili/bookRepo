@@ -1,6 +1,7 @@
 @import "../../utilities/colors.scss";
 .sidebarWrapper {
   height: calc(100vh - 74px);
+
   .tabWrapper {
     max-height: 100vh;
     width: 81px;
@@ -40,6 +41,14 @@
   }
   .sideBarInner {
     display: flex;
+  }
+  @media (max-width: 768px) {
+    height: auto;
+    .tabWrapper {
+      height: auto;
+      width: 100%;
+      flex-direction: row;
+    }
   }
 }
 

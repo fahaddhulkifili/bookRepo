@@ -21,4 +21,10 @@
 
     background-color: $theme-primary;
   }
+  @media (max-width: 990px) {
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-thumb {
+      width: 0px;
+    }
+  }
 }

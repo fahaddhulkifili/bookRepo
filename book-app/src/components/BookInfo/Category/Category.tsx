@@ -7,13 +7,13 @@ const Category = () => {
   const [data, setData] = useState([] as any[]);
   // useEffect(() => {
   //   fetch(
-  //     "https://api.nytimes.com/svc/books/v3/lists.json?list=hardcover-fiction&api-key=qDuQDSnngqN8GQSGHWP0CYCMXghEFz3V"
+  //     "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=qDuQDSnngqN8GQSGHWP0CYCMXghEFz3V"
   //   )
   //     .then((response) => response.json())
   //     .then((result) => {
-  //       console.log(result);
-  //       console.log(typeof result);
   //       setData(result);
+  //       console.log(result.results[0].title);
+  //       // console.log(typeof data);
   //     })
   //     .catch((err) => {
   //       console.log(err.message);
