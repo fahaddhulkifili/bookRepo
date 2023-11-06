@@ -3,11 +3,11 @@ import InfoListItem from "../../components/InfoListItem/InfoListItem";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Container from "../../components/UI/Container";
-import styles from "./DetailsPage.module.scss";
+import styles from "./FavouritePage.module.scss";
 
-interface Props {}
+type Props = {};
 
-const DetailsPage = (props: Props) => {
+const FavouritePage = (props: Props) => {
   return (
     <>
       <Header />
@@ -15,11 +15,9 @@ const DetailsPage = (props: Props) => {
         <Sidebar />
         <div className={styles.pageWrapper}>
           <Container>
-            <span className={styles.detailHead}>
-              New York Times Bestsellers
-            </span>
+            <span className={styles.detailHead}>Favourites</span>
             <SearchBar />
-            <InfoListItem otherInfo={false} />
+            <InfoListItem otherInfo={true} />
           </Container>
         </div>
       </div>
@@ -27,4 +25,4 @@ const DetailsPage = (props: Props) => {
   );
 };
 
-export default DetailsPage;
+export default FavouritePage;

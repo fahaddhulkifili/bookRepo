@@ -8,8 +8,27 @@
     font-weight: 700;
     font-size: 22px;
   }
-  .gridImage {
-    width: 100%;
-    height: auto;
+  .imgWrapper {
+    overflow: hidden;
+    .gridImage {
+      width: 100%;
+      height: auto;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+      &:hover {
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+      }
+    }
+  }
+
+  .linkHover {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: $theme-secondary;
+    }
   }
 }

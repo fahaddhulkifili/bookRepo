@@ -2,9 +2,9 @@ import React from "react";
 import "./App.scss";
 import DetailsPage from "./pages/DetailsPage/DetailsPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
+import FavouritePage from "./pages/FavouritePage/FavouritePage";
+import FavouritesDetailsPage from "./pages/FavouritesDetailsPage/FavouritesDetailsPage";
 import { Routes, Route } from "react-router-dom";
-// import Header from "./components/Header/Header";
-// import Sidebar from "./components/Sidebar/Sidebar";
 
 function App() {
   return (
@@ -13,6 +13,8 @@ function App() {
         <Route index element={<LandingPage />} />
         <Route path="/home" element={<LandingPage />} />
         <Route path="/details" element={<DetailsPage />} />
+        <Route path="/favourites" element={<FavouritePage />} />
+        <Route path="/favouritesEdit" element={<FavouritesDetailsPage />} />
       </Routes>
     </>
   );

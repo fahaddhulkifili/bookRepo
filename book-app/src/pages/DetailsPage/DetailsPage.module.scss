@@ -1,5 +1,7 @@
 @import "../../utilities/colors.scss";
-
+.componentContainer {
+  display: flex;
+}
 .pageWrapper {
   flex: 1;
   background-color: $theme-primary-light;
@@ -18,7 +20,13 @@
 
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
-
     background-color: $theme-primary;
+  }
+  .detailHead {
+    display: block;
+    margin-top: 55px;
+    font-size: 22px;
+    color: $theme-secondary;
+    font-weight: 900;
   }
 }

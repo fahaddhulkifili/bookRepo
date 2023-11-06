@@ -1,90 +1,72 @@
-import * as React from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import React from "react";
 import styles from "./Sidebar.module.scss";
 import StatIcon from "../../assets/Icons/StatIcon";
 import FavouriteIcon from "../../assets/Icons/FavouriteIcon";
 import SettingsIcon from "../../assets/Icons/SettingsIcon";
-import BookInfo from "../BookInfo/BookInfo";
+import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
+import { log } from "console";
 
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
-
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      className={styles.tabpanelContainer}
-      hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box className={styles.tabContainerWrapper}>{children}</Box>
-      )}
-    </div>
-  );
-}
-
-function a11yProps(index: number) {
-  return {
-    id: `vertical-tab-${index}`,
-    "aria-controls": `vertical-tabpanel-${index}`,
-  };
-}
+interface Props {}
 
 export default function VerticalTabs() {
-  const [value, setValue] = React.useState(0);
+  const [homeActive, setHomeActive] = React.useState<boolean>(false);
+  const [favouriteactive, setFavouriteActive] = React.useState<boolean>(false);
+  const [settingActive, setSettingActive] = React.useState<boolean>(false);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+  const navigate = useNavigate();
+
+  const handleHomeClick = () => {
+    navigate("/home");
+    // setHomeActive(true);
+    // console.log(homeActive, "homeActive");
+
+    // setFavouriteActive(false);
+    // setSettingActive(false);
+  };
+  const handleFavouriteClick = () => {
+    navigate("/favourites");
+    // setHomeActive(false);
+    // console.log(favouriteactive, "favouriteactive");
+    // setFavouriteActive(true);
+    // setSettingActive(false);
+  };
+  const handleSettingClick = () => {
+    // setHomeActive(false);
+    // console.log(settingActive, "settingActive");
+    // setFavouriteActive(false);
+    // setSettingActive(true);
   };
 
   return (
     <div className={styles.sidebarWrapper}>
-      <div style={{ display: "flex" }}>
-        <Tabs
-          orientation="vertical"
-          value={value}
-          onChange={handleChange}
-          aria-label="Vertical tabs"
-          className={styles.tabWrapper}
-          centered={true}
-          sx={{
-            "& button": { borderRadius: "0px 15px 15px 0px" },
-            ".Mui-selected": {
-              background: "linear-gradient(180deg, #679cf6 0%, #4072ee 100%)",
-            },
-            ".Mui-selected svg path": { fill: "#fff" },
-            ".Mui-selected .favIcon path": { fill: "none", stroke: "#fff" },
-          }}
-          TabIndicatorProps={{
-            style: {
-              display: "none",
-            },
-          }}
-        >
-          <Tab icon={<StatIcon />} {...a11yProps(0)} />
-          <Tab icon={<FavouriteIcon />} {...a11yProps(1)} />
-          <Tab icon={<SettingsIcon />} {...a11yProps(2)} />
-        </Tabs>
-        <TabPanel value={value} index={0}>
-          <BookInfo />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          Item Two
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          Item Three
-        </TabPanel>
+      <div className={styles.sideBarInner}>
+        <div className={styles.tabWrapper}>
+          <Button
+            className={
+              !homeActive ? styles.sideBarBtn : styles.sidebarBtnActive
+            }
+            onClick={handleHomeClick}
+          >
+            <StatIcon />
+          </Button>
+          <Button
+            className={
+              !favouriteactive ? styles.sideBarBtn : styles.sidebarBtnActive
+            }
+            onClick={handleFavouriteClick}
+          >
+            <FavouriteIcon />
+          </Button>
+          <Button
+            className={
+              !settingActive ? styles.sideBarBtn : styles.sidebarBtnActive
+            }
+            onClick={handleSettingClick}
+          >
+            <SettingsIcon />
+          </Button>
+        </div>
       </div>
     </div>
   );
