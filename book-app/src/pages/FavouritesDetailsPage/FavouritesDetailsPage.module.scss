@@ -82,6 +82,9 @@
       }
     }
   }
+  @media (max-width: 768px) {
+    min-height: 100vh;
+  }
   @media (max-width: 990px) {
     &::-webkit-scrollbar,
     &::-webkit-scrollbar-thumb {

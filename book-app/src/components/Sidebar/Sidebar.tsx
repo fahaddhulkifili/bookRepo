@@ -5,7 +5,6 @@ import FavouriteIcon from "../../assets/Icons/FavouriteIcon";
 import SettingsIcon from "../../assets/Icons/SettingsIcon";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-import { log } from "console";
 
 interface Props {}
 
@@ -20,7 +19,6 @@ export default function VerticalTabs() {
     navigate("/home");
     // setHomeActive(true);
     // console.log(homeActive, "homeActive");
-
     // setFavouriteActive(false);
     // setSettingActive(false);
   };

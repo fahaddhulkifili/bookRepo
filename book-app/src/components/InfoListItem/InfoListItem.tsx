@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BookIcon from "../../assets/Icons/BookIcon";
 import FavouriteIcon from "../../assets/Icons/FavouriteIcon";
 import StarIcon from "../../assets/Icons/StarIcon";
@@ -9,11 +9,25 @@ import { useNavigate } from "react-router-dom";
 
 interface Props {
   otherInfo: boolean;
+  data?: any;
 }
 
-const InfoListItem = (props: Props) => {
-  const [value, setValue] = React.useState<number | null>(2);
+interface SavedDataType {}
+
+const InfoListItem: React.FC<Props> = ({ otherInfo, data }: Props) => {
+  const [value, setValue] = useState<number | null>(2);
+  const [active, setActive] = useState<boolean | null>(false);
+  const [savedData, setSavedData] = useState<SavedDataType[]>([]);
   const navigate = useNavigate();
+
+  const handleClickFavourite = (dataToSave: SavedDataType) => {
+    setSavedData([...savedData, dataToSave]);
+    setActive(!active);
+
+    localStorage.setItem("savedData", JSON.stringify(dataToSave));
+    console.log("---", dataToSave);
+  };
+
   return (
     <div className={styles.listItmeWrapper}>
       <div className={styles.listItemDetails}>
@@ -21,27 +35,37 @@ const InfoListItem = (props: Props) => {
           <BookIcon />
         </div>
         <div className={styles.listItemAuthor}>
-          <span>I ALONE CAN FIX IT </span>
-          <span>by Carol Leonnig and Philip Ruckerller</span>
+          <span>{data?.title} </span>
+          <span>by {data?.author}</span>
         </div>
       </div>
-      {!props.otherInfo ? (
+      {!otherInfo ? (
         <div className={styles.listItemData}>
           <div className={styles.listItemRating}>
             <Rating
               name="simple-controlled"
+              readOnly
               value={value}
               icon={<StarFilledIcon />}
               emptyIcon={<StarIcon />}
               onChange={(event, newValue) => {
-                setValue(newValue);
+                if (newValue !== null) {
+                  setValue(newValue);
+                }
               }}
             />
           </div>
           <div className={styles.listItemAmount}>
-            <span>16 GBP</span>
+            <span>{data?.price} GBP</span>
           </div>
-          <Button className={styles.listItemReaction}>
+          <Button
+            className={
+              !active
+                ? styles.listItemReaction
+                : `${styles.listItemReaction} ${styles.listItemReactionActive}`
+            }
+            onClick={() => handleClickFavourite(data)}
+          >
             <FavouriteIcon />
           </Button>
         </div>
@@ -57,7 +81,9 @@ const InfoListItem = (props: Props) => {
               icon={<StarFilledIcon />}
               emptyIcon={<StarIcon />}
               onChange={(event, newValue) => {
-                setValue(newValue);
+                if (newValue !== null) {
+                  setValue(newValue);
+                }
               }}
             />
           </div>
@@ -72,7 +98,13 @@ const InfoListItem = (props: Props) => {
           <Button className={styles.actionButton}>
             <span>Delete</span>
           </Button>
-          <Button className={styles.listItemReaction}>
+          <Button
+            className={
+              !active
+                ? styles.listItemReaction
+                : `${styles.listItemReaction} ${styles.listItemReactionActive}`
+            }
+          >
             <FavouriteIcon />
           </Button>
         </div>

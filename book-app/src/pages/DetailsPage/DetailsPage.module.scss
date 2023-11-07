@@ -32,6 +32,13 @@
     color: $theme-secondary;
     font-weight: 900;
   }
+  .userMessage {
+    p {
+      text-align: center;
+      font-size: 16px;
+      color: #5b5b5b;
+    }
+  }
   @media (max-width: 768px) {
     min-height: 100vh;
   }

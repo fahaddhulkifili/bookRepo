@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     img {
       width: 40px;
       height: 40px;
@@ -29,6 +30,7 @@
         font-size: 23p;
         font-weight: 800;
         margin: 0;
+        cursor: pointer;
         span {
           color: $theme-red;
         }

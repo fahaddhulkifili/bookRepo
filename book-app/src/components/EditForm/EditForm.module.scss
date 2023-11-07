@@ -60,4 +60,14 @@
     padding: 12px;
     min-width: 218px;
   }
+  @media (max-width: 768px) {
+    .customField {
+      .fieldItem {
+        input,
+        .ratingInput {
+          max-width: 250px;
+        }
+      }
+    }
+  }
 }
