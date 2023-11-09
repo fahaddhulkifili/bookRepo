@@ -1,39 +1,17 @@
-import React from "react";
-import styles from "./Sidebar.module.scss";
-import StatIcon from "../../assets/Icons/StatIcon";
+import Button from "@mui/material/Button";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FavouriteIcon from "../../assets/Icons/FavouriteIcon";
 import SettingsIcon from "../../assets/Icons/SettingsIcon";
-import Button from "@mui/material/Button";
-import { useNavigate } from "react-router-dom";
-
-interface Props {}
+import StatIcon from "../../assets/Icons/StatIcon";
+import styles from "./Sidebar.module.scss";
 
 export default function VerticalTabs() {
-  const [homeActive, setHomeActive] = React.useState<boolean>(false);
-  const [favouriteactive, setFavouriteActive] = React.useState<boolean>(false);
-  const [settingActive, setSettingActive] = React.useState<boolean>(false);
-
+  const [activeTab, setActiveTab] = useState<string>("home");
   const navigate = useNavigate();
-
-  const handleHomeClick = () => {
-    navigate("/home");
-    // setHomeActive(true);
-    // console.log(homeActive, "homeActive");
-    // setFavouriteActive(false);
-    // setSettingActive(false);
-  };
-  const handleFavouriteClick = () => {
-    navigate("/favourites");
-    // setHomeActive(false);
-    // console.log(favouriteactive, "favouriteactive");
-    // setFavouriteActive(true);
-    // setSettingActive(false);
-  };
-  const handleSettingClick = () => {
-    // setHomeActive(false);
-    // console.log(settingActive, "settingActive");
-    // setFavouriteActive(false);
-    // setSettingActive(true);
+  const handleButtonClick = (tabName: string) => {
+    setActiveTab(tabName);
+    navigate(`/${tabName}`);
   };
 
   return (
@@ -42,25 +20,29 @@ export default function VerticalTabs() {
         <div className={styles.tabWrapper}>
           <Button
             className={
-              !homeActive ? styles.sideBarBtn : styles.sidebarBtnActive
+              activeTab === "home" ? styles.sidebarBtnActive : styles.sideBarBtn
             }
-            onClick={handleHomeClick}
+            onClick={() => handleButtonClick("home")}
           >
             <StatIcon />
           </Button>
           <Button
             className={
-              !favouriteactive ? styles.sideBarBtn : styles.sidebarBtnActive
+              activeTab === "favourites"
+                ? styles.sidebarBtnActive
+                : styles.sideBarBtn
             }
-            onClick={handleFavouriteClick}
+            onClick={() => handleButtonClick("favourites")}
           >
             <FavouriteIcon />
           </Button>
           <Button
             className={
-              !settingActive ? styles.sideBarBtn : styles.sidebarBtnActive
+              activeTab === "settings"
+                ? styles.sidebarBtnActive
+                : styles.sideBarBtn
             }
-            onClick={handleSettingClick}
+            onClick={() => handleButtonClick("settings")}
           >
             <SettingsIcon />
           </Button>

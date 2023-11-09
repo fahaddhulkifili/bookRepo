@@ -4,6 +4,11 @@
   height: 52px;
   background-color: $theme-primary !important;
   box-shadow: none !important;
+  @media (max-width: 768px) {
+    span {
+      font-size: 12px;
+    }
+  }
 }
 .inputField {
   border-radius: 41px;
@@ -19,6 +24,14 @@
       color: #5b5b5b;
       font-weight: 400;
       font-size: 16px;
+    }
+  }
+  @media (max-width: 768px) {
+    margin-top: 30px !important;
+    input {
+      &::placeholder {
+        font-size: 14px;
+      }
     }
   }
 }

@@ -10,23 +10,18 @@ import { useNavigate } from "react-router-dom";
 interface Props {
   otherInfo: boolean;
   data?: any;
+  onAction?: any;
 }
 
-interface SavedDataType {}
-
-const InfoListItem: React.FC<Props> = ({ otherInfo, data }: Props) => {
+const InfoListItem: React.FC<Props> = ({
+  otherInfo,
+  data,
+  onAction,
+}: Props) => {
   const [value, setValue] = useState<number | null>(2);
-  const [active, setActive] = useState<boolean | null>(false);
-  const [savedData, setSavedData] = useState<SavedDataType[]>([]);
+
+  // const [updatedAmount, setUpdatedAmount] = useState<number | string | "">("");
   const navigate = useNavigate();
-
-  const handleClickFavourite = (dataToSave: SavedDataType) => {
-    setSavedData([...savedData, dataToSave]);
-    setActive(!active);
-
-    localStorage.setItem("savedData", JSON.stringify(dataToSave));
-    console.log("---", dataToSave);
-  };
 
   return (
     <div className={styles.listItmeWrapper}>
@@ -60,11 +55,13 @@ const InfoListItem: React.FC<Props> = ({ otherInfo, data }: Props) => {
           </div>
           <Button
             className={
-              !active
+              true
                 ? styles.listItemReaction
                 : `${styles.listItemReaction} ${styles.listItemReactionActive}`
             }
-            onClick={() => handleClickFavourite(data)}
+            onClick={() => {
+              onAction(data);
+            }}
           >
             <FavouriteIcon />
           </Button>
@@ -100,7 +97,7 @@ const InfoListItem: React.FC<Props> = ({ otherInfo, data }: Props) => {
           </Button>
           <Button
             className={
-              !active
+              true
                 ? styles.listItemReaction
                 : `${styles.listItemReaction} ${styles.listItemReactionActive}`
             }

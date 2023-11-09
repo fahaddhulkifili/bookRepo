@@ -9,7 +9,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
     img {
       width: 40px;
       height: 40px;
@@ -27,12 +26,22 @@
       padding-left: 43px;
       p {
         color: $black-color;
-        font-size: 23p;
-        font-weight: 800;
+        font-size: 23px;
+        font-weight: 900;
         margin: 0;
         cursor: pointer;
         span {
           color: $theme-red;
+        }
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    .headerWrapper {
+      .logoWrapper {
+        padding-left: 25px;
+        p {
+          font-size: 18px;
         }
       }
     }

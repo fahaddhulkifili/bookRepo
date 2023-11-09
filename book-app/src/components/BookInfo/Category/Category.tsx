@@ -3,6 +3,7 @@ import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const Category = () => {
+  //Temporary array of images ro display the content in home page
   let userTestStatus: { id: number; img: string }[] = [
     { id: 0, img: require("../../../assets/temp/image1.png") },
     { id: 1, img: require("../../../assets/temp/image2.png") },
