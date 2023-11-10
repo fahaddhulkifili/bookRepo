@@ -1,0 +1,64 @@
+@import "../../utilities/colors.scss";
+.componentContainer {
+  display: flex;
+  flex: 1;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+.pageWrapper {
+  flex: 1;
+  background-color: $theme-primary-light;
+  max-height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 120px;
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #f5f5f5;
+  }
+
+  &::-webkit-scrollbar {
+    width: 12px;
+    background-color: #f5f5f5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: $theme-primary;
+  }
+  .pageInfoMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    svg {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      fill: $theme-secondary;
+    }
+    p {
+      display: block;
+      margin: 0;
+      font-size: 18px;
+      color: $theme-secondary;
+      font-weight: 600;
+    }
+  }
+
+  @media (max-width: 768px) {
+    min-height: 100vh;
+    .pageInfoMessage {
+      margin-top: 40px;
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+  @media (max-width: 990px) {
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-thumb {
+      width: 0px;
+    }
+  }
+}

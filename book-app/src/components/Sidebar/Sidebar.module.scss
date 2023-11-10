@@ -1,0 +1,94 @@
+@import "../../utilities/colors.scss";
+.sidebarWrapper {
+  height: calc(100vh - 74px);
+
+  .tabWrapper {
+    max-height: 100vh;
+    width: 81px;
+    height: calc(100vh - 74px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $theme-secondary;
+  }
+  .sideBarBtn {
+    width: 100%;
+    padding: 23px;
+    position: relative;
+    svg {
+      width: 24px;
+      height: 20px;
+      z-index: 10;
+    }
+    &::after {
+      content: "";
+      bottom: 0;
+      position: absolute;
+      background-color: #e8f0f8;
+      width: 20px;
+      height: 1px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    &:hover {
+      svg {
+        transform: scale(1.1);
+        transition: 0.2s ease-in;
+      }
+    }
+  }
+  .sidebarBtnActive {
+    width: 100%;
+    padding: 23px;
+    border: 0;
+    &::after {
+      display: none;
+    }
+    &::before {
+      content: "";
+      bottom: 0;
+      position: absolute;
+      z-index: 1;
+      width: 96px;
+      height: 100%;
+      background: $primary-linear-gradient !important;
+      border-radius: 0px 5px 5px 0px;
+      box-shadow: 0px 5px 15px #3d4c6c;
+    }
+    svg {
+      z-index: 10;
+      path {
+        fill: $white-color;
+        stroke: none;
+      }
+    }
+    .favIcon {
+      fill: none !important;
+      path {
+        stroke: $white-color;
+      }
+    }
+  }
+  .sideBarInner {
+    display: flex;
+  }
+  @media (max-width: 768px) {
+    height: auto;
+    .tabWrapper {
+      height: auto;
+      width: 100%;
+      flex-direction: row;
+    }
+    .sidebarBtnActive {
+      &::before {
+        border-radius: 0px 0px 5px 5px;
+      }
+    }
+  }
+}
+
+.tabpanelContainer {
+  flex: 1;
+  background-color: $theme-primary-light;
+}
