@@ -3,7 +3,7 @@ import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const Category = () => {
-  //Temporary array of images ro display the content in home page
+  //Temporary array of images to display the content in home page
   let userTestStatus: { id: number; img: string }[] = [
     { id: 0, img: require("../../../assets/temp/image1.png") },
     { id: 1, img: require("../../../assets/temp/image2.png") },
@@ -52,7 +52,7 @@ const Category = () => {
         </Grid>
       </section>
       <section className={styles.categorySection}>
-        <Link to="/favourites" className={styles.linkHover}>
+        <Link to="/details/favourites" className={styles.linkHover}>
           <span className={styles.categoryHead}>Favourites</span>
         </Link>
         <Grid container spacing={2}>

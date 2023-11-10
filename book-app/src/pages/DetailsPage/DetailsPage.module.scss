@@ -1,6 +1,7 @@
 @import "../../utilities/colors.scss";
 .componentContainer {
   display: flex;
+  flex: 1;
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -39,6 +40,11 @@
       font-size: 16px;
       color: #5b5b5b;
     }
+  }
+  .skeletonItem {
+    max-width: 949px;
+    height: 52px;
+    margin-top: 17px;
   }
   @media (max-width: 768px) {
     min-height: 100vh;

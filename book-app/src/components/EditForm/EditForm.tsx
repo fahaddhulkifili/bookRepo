@@ -12,7 +12,6 @@ const EditForm = (props: Props) => {
 
   const formHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(value, inputValue);
   };
   const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputvalue(event.target.value);

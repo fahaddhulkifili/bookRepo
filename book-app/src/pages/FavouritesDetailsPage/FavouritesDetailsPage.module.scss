@@ -1,6 +1,7 @@
 @import "../../utilities/colors.scss";
 .componentContainer {
   display: flex;
+  flex: 1;
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -86,6 +87,7 @@
     min-height: 100vh;
     .overlayContent {
       .autherInfo {
+        text-align: center;
         span {
           font-size: 23px !important;
         }

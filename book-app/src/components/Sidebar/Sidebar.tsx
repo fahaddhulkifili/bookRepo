@@ -7,13 +7,16 @@ import StatIcon from "../../assets/Icons/StatIcon";
 import styles from "./Sidebar.module.scss";
 
 export default function VerticalTabs() {
-  const [activeTab, setActiveTab] = useState<string>("home");
+  const [activeTab, setActiveTab] = useState<string>("");
   const navigate = useNavigate();
   const handleButtonClick = (tabName: string) => {
     setActiveTab(tabName);
-    navigate(`/${tabName}`);
+    if (tabName === "favourites") {
+      navigate("/details/favourites");
+    } else {
+      navigate(`/${tabName}`);
+    }
   };
-
   return (
     <div className={styles.sidebarWrapper}>
       <div className={styles.sideBarInner}>

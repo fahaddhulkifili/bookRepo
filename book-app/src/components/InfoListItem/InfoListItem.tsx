@@ -10,17 +10,19 @@ import { useNavigate } from "react-router-dom";
 interface Props {
   otherInfo: boolean;
   data?: any;
-  onAction?: any;
+  handleFavourite?: Function;
+  handleUnfavourite?: Function;
+  active?: any;
 }
 
 const InfoListItem: React.FC<Props> = ({
   otherInfo,
   data,
-  onAction,
+  handleFavourite,
+  handleUnfavourite,
+  active,
 }: Props) => {
   const [value, setValue] = useState<number | null>(2);
-
-  // const [updatedAmount, setUpdatedAmount] = useState<number | string | "">("");
   const navigate = useNavigate();
 
   return (
@@ -55,12 +57,14 @@ const InfoListItem: React.FC<Props> = ({
           </div>
           <Button
             className={
-              true
+              !active.includes(data?.title)
                 ? styles.listItemReaction
                 : `${styles.listItemReaction} ${styles.listItemReactionActive}`
             }
             onClick={() => {
-              onAction(data);
+              if (typeof handleFavourite === "function") {
+                handleFavourite(data);
+              }
             }}
           >
             <FavouriteIcon />
@@ -69,11 +73,12 @@ const InfoListItem: React.FC<Props> = ({
       ) : (
         <div className={styles.listItemData}>
           <div className={styles.listItemAmount}>
-            <span>16 GBP</span>
+            <span>{data?.price} GBP</span>
           </div>
           <div className={styles.listItemRating}>
             <Rating
               name="simple-controlled"
+              readOnly
               value={value}
               icon={<StarFilledIcon />}
               emptyIcon={<StarIcon />}
@@ -92,15 +97,18 @@ const InfoListItem: React.FC<Props> = ({
           >
             <span>Edit</span>
           </Button>
-          <Button className={styles.actionButton}>
+          <Button
+            className={styles.actionButton}
+            onClick={() => {
+              if (typeof handleUnfavourite === "function") {
+                handleUnfavourite(data);
+              }
+            }}
+          >
             <span>Delete</span>
           </Button>
           <Button
-            className={
-              true
-                ? styles.listItemReaction
-                : `${styles.listItemReaction} ${styles.listItemReactionActive}`
-            }
+            className={`${styles.listItemReaction} ${styles.listItemReactionActive}`}
           >
             <FavouriteIcon />
           </Button>
